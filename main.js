@@ -84,3 +84,94 @@ Dog.prototype.bark = function() {
 // Only change code above this line
 
 let beagle = new Dog();
+
+function Bird() { }
+
+Bird.prototype.fly = function() { return "I am flying!"; };
+
+function Penguin() { }
+Penguin.prototype = Object.create(Bird.prototype);
+Penguin.prototype.constructor = Penguin;
+
+// Only change code below this line
+Penguin.prototype.fly = function() {
+  return "Alas, this is a flightless bird."
+}
+
+
+// Only change code above this line
+
+let penguin = new Penguin();
+console.log(penguin.fly());
+
+function Bird() {
+    let weight = 15
+    this.getWeight = function() {
+      return weight
+    }
+  }
+  
+
+  let funModule = {
+    isCuteMixin: function (obj) {
+      obj.isCute = function () {
+        return true;
+      };
+    },
+    singMixin: function (obj) {
+      obj.sing = function () {
+        console.log("Singing to an awesome tune");
+      };
+    }
+  }
+  let duck = {}
+  funModule.isCuteMixin(duck)
+  console.log(duck.isCute())
+
+  // Function that returns a string representing a cup of green tea
+const prepareGreenTea = () => 'greenTea';
+
+// Function that returns a string representing a cup of black tea
+const prepareBlackTea = () => 'blackTea';
+
+/*
+Given a function (representing the tea type) and number of cups needed, the
+following function returns an array of strings (each representing a cup of
+a specific type of tea).
+*/
+const getTea = (prepareTea, numOfCups) => {
+  const teaCups = [];
+
+  for(let cups = 1; cups <= numOfCups; cups += 1) {
+    const teaCup = prepareTea();
+    teaCups.push(teaCup);
+  }
+  return teaCups;
+};
+
+// Only change code below this line
+const tea4GreenTeamFCC = getTea(prepareGreenTea, 27);
+const tea4BlackTeamFCC = getTea(prepareBlackTea, 13);
+// Only change code above this line
+
+console.log(
+  tea4GreenTeamFCC,
+  tea4BlackTeamFCC
+);
+
+// The global variable
+var s = [23, 65, 98, 5];
+
+Array.prototype.myMap = function(callback) {
+  var newArray = [];
+  // Only change code below this line
+  for (let i = 0; i < this.length; i++) {
+    newArray.push(callback(this[i], i, this))
+  }
+  // Only change code above this line
+  return newArray;
+};
+
+var new_s = s.myMap(function(item) {
+  return item * 2;
+});
